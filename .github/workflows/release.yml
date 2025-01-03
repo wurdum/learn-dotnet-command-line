@@ -40,7 +40,7 @@ jobs:
         run: echo "FullSemVer=$(dotnet-gitversion /output json /showvariable FullSemVer)" >> $GITHUB_OUTPUT
 
       - name: Build
-        run: dotnet publish ./learn-dotnet-command-line.csproj -c Release -r ${{ matrix.rid }} --self-contained -p:PublishAot=true -p:Version=${{ steps.gitversion.outputs.FullSemVer }} -o ./publish
+        run: dotnet publish ./learn-dotnet-command-line.csproj -c Release -r ${{ matrix.rid }} --self-contained -p:PublishAot=true -p:Version="${{ steps.gitversion.outputs.FullSemVer }}" -o ./publish
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
