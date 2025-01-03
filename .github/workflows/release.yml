@@ -45,7 +45,7 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: ghdump-${{ matrix.rid }}
+          name: ldcl-${{ matrix.rid }}
           path: ./publish/ldcl*
 
   create_release:
