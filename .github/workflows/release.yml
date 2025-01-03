@@ -37,8 +37,7 @@ jobs:
 
       - name: Determine version
         id: gitversion
-        shell: bash
-        run: echo "FullSemVer=$(dotnet-gitversion /output json /showvariable FullSemVer)" >> $GITHUB_OUTPUT
+        run: echo "::set-output name=FullSemVer::$(dotnet-gitversion /output json /showvariable FullSemVer)"
 
       - name: Build
         run: dotnet publish ./learn-dotnet-command-line.csproj -c Release -r ${{ matrix.rid }} --self-contained -p:PublishAot=true -p:Version=${{ steps.gitversion.outputs.FullSemVer }} -o ./publish
